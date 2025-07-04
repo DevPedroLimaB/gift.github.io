@@ -1,0 +1,346 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  overflow: hidden;
+  background-color: #d4ffd4;
+}
+
+/* PRESENTE EMBRULHADO */
+#present-screen {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #00adcd, #072e5a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999;
+  cursor: pointer;
+  position: relative;
+}
+
+.ribbon-vertical, .ribbon-horizontal {
+  position: absolute;
+  background: #d32b2b;
+  z-index: 1;
+}
+
+.ribbon-vertical {
+  width: 60px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ribbon-horizontal {
+  height: 60px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* LAÇO GRANDE */
+.bow {
+  position: absolute;
+  z-index: 3;
+  font-size: 300px; /* TAMANHO AUMENTADO! */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: gold!important;
+  text-shadow: 4px 4px 10px #00000044;
+}
+
+/* POST-IT REPOSICIONADO */
+.post-it {
+  position: absolute;
+  top: 25%;
+  right: 15%;
+  width: 160px;
+  height: 160px;
+  background: #ffff88;
+  padding: 15px;
+  font-weight: bold;
+  color: #333;
+  border: 2px solid #ccc;
+  border-radius: 1px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+  transform: rotate(-5deg);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* CORAÇÕES */
+.hearts {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #add8e6;
+  transform: rotate(45deg);
+  animation: float 10s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #add8e6;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Quicksand:wght@400;600&display=swap');
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #f7f6f2;
+  font-family: 'Quicksand', sans-serif;
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+}
+
+
+.sticker {
+  position: absolute;
+  width: clamp(80px, 20vw, 200px); /* Responsivo: mínimo 80px, máximo 200px */
+  opacity: 0.9;
+  z-index: 2;
+  pointer-events: none;
+  animation: fadeIn 1.2s ease;
+  transition: transform 0.3s ease;
+}
+
+/* Ajustes de posição para desktop (opcional se estiver usando JS para posições aleatórias) */
+.jake1 { top: 40px; left: 120px; transform: rotate(-10deg); }
+.jake2 { top: 120px; right: 140px; transform: rotate(8deg); }
+.jake3 { bottom: 150px; left: 230px; transform: rotate(5deg); }
+.lirio1 { bottom: 400px; left: 230px; transform: rotate(5deg);}
+.lirio2 { top: 520px; right: 240px; transform: rotate(8deg); }
+.lirio3 { top: 240px; left: 70px; transform: rotate(-10deg); }
+/* Fade-in animado */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsividade extra para telas pequenas */
+@media (max-width: 600px) {
+  .sticker {
+    width: clamp(60px, 25vw, 120px); /* reduz stickers no mobile */
+  }
+}
+
+/* CONTÉUDO DEPOIS DO PRESENTE */
+#content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, #fffefc, #e6f7ff);
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+/* TÍTULO */
+.birthday-message {
+  font-family: 'Sacramento', cursive;
+  font-size: 3rem;
+  color: #072e5a;
+  text-shadow: 2px 2px 4px #add8e6;
+  margin-bottom: 10px;
+  position: relative;
+  animation: fadeIn 1.5s ease;
+}
+
+.birthday-message .emoji {
+  display: inline-block;
+  animation: shake 1.4s infinite;
+}
+
+/* TEXTO FOFO */
+#message {
+  font-size: 1.3rem;
+  color: #555;
+  font-style: italic;
+  max-width: 600px;
+  padding: 0 20px;
+  animation: fadeIn 1.5s ease;
+}
+
+/* SLIDER */
+/* Garante que o slider tenha sempre o mesmo tamanho */
+#slider {
+  width: 90%;
+  max-width: 400px;
+  overflow: hidden;
+  margin: 25px 0;
+  border-radius: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border: 4px solid #00adcd;
+  animation: fadeIn 1.6s ease;
+  background-color: white; /* para não parecer "vazio" enquanto troca */
+}
+
+/* As imagens se ajustam à altura */
+#slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* corta e ajusta para preencher */
+  display: none;
+  border-radius: 25px;
+}
+
+#slider img.active {
+  display: block;
+}
+
+#stickers-container {
+  position: fixed; /* para stickers ficarem fixos na tela */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* para os cliques passarem por eles */
+  z-index: 2; /* acima do conteúdo, mas abaixo de overlays importantes */
+}
+
+/* stickers continuam com position: absolute para posicionar dentro do container */
+
+.spotify-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 10px;
+  background: linear-gradient(135deg, #0077cc, #00aad4);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 173, 205, 0.6);
+}
+
+.spotify-widget {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 173, 205, 0.8);
+}
+
+/* CORAÇÕES CONTINUA IGUAL */
+
+/* ANIMAÇÕES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(3deg); }
+  50% { transform: rotate(-3deg); }
+  75% { transform: rotate(2deg); }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .birthday-message {
+    font-size: 2.2rem;
+  }
+
+  #message {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .sticker {
+    width: clamp(60px, 25vw, 120px);
+  }
+
+  .jake1 {
+    top: 10px !important;
+    left: 10px !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: rotate(-10deg) scale(0.8);
+  }
+  .jake2 {
+    top: 80px !important;
+    right: 10px !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: rotate(8deg) scale(0.8);
+  }
+  .jake3 {
+    bottom: 100px !important;
+    left: 10px !important;
+    top: auto !important;
+    right: auto !important;
+    transform: rotate(5deg) scale(0.8);
+  }
+  .lirio1 {
+    bottom: 150px !important;
+    right: 10px !important;
+    top: auto !important;
+    left: auto !important;
+    transform: rotate(5deg) scale(0.8);
+  }
+  .lirio2 {
+    top: 200px !important;
+    right: 5px !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: rotate(8deg) scale(0.8);
+  }
+  .lirio3 {
+    top: 180px !important;
+    left: 5px !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: rotate(-10deg) scale(0.8);
+  }
+}
+
+
